@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:12.18
+    environment:
+      POSTGRES_DB: ${DB_NAME:skillbox}
+      POSTGRES_USER: ${DB_USER:skillbox}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:skillbox}
+    ports:
+      - "${DB_PORT:5432}:5432"
+    networks:
+      - wallet-network
+
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:skillbox}
+      DB_USER: ${DB_USER:skillbox}
+      DB_PASSWORD: ${DB_PASSWORD:skillbox}
+    ports:
+      - "8080:8080"
+    networks:
+      - wallet-network
+
+networks:
+  wallet-network:
+    driver: bridge

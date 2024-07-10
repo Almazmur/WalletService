@@ -1,0 +1,21 @@
+spring:
+    datasource:
+        url: jdbc:postgresql://192.168.99.100:5432/${DB_NAME:skillbox}
+        username: ${DB_USER:skillbox}
+        password: ${DB_PASSWORD:skillbox}
+        driver-class-name: org.postgresql.Driver
+
+    jpa:
+        hibernate:
+            ddl-auto: none  # 'none' предотвращает создание и удаление таблиц автоматически
+        show-sql: true
+
+    liquibase:
+        change-log: classpath:/db/changelog/db.changelog-master.xml
+        enabled: true
+        drop-first: false
+
+    server:
+        error:
+            whitelabel:
+                enabled: false
