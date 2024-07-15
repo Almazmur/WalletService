@@ -1,3 +1,4 @@
+import org.example.wallet.dto.OperationType;
 import org.example.wallet.dto.WalletOperationRequest;
 import org.example.wallet.entity.Wallet;
 import org.example.wallet.repository.WalletRepository;
@@ -39,7 +40,7 @@ public class WalletServiceTest {
 
         WalletOperationRequest request = new WalletOperationRequest();
         request.setWalletId(walletId);
-        request.setOperationType(WalletOperationRequest.OperationType.DEPOSIT);
+        request.setOperationType(OperationType.DEPOSIT);
         request.setAmount(500L);
 
         when(walletRepository.findById(walletId)).thenReturn(Optional.of(wallet));
@@ -60,7 +61,7 @@ public class WalletServiceTest {
 
         WalletOperationRequest request = new WalletOperationRequest();
         request.setWalletId(walletId);
-        request.setOperationType(WalletOperationRequest.OperationType.WITHDRAW);
+        request.setOperationType(OperationType.WITHDRAW);
         request.setAmount(300L);
 
         when(walletRepository.findById(walletId)).thenReturn(Optional.of(wallet));
@@ -80,7 +81,7 @@ public class WalletServiceTest {
 
         WalletOperationRequest request = new WalletOperationRequest();
         request.setWalletId(walletId);
-        request.setOperationType(WalletOperationRequest.OperationType.WITHDRAW);
+        request.setOperationType(OperationType.WITHDRAW);
         request.setAmount(200L);
 
         when(walletRepository.findById(walletId)).thenReturn(Optional.of(wallet));

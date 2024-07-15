@@ -12,7 +12,4 @@ public class WalletOperationRequest {
     private OperationType operationType;
     private long amount;
 
-    public enum OperationType {
-        DEPOSIT, WITHDRAW
-    }
 }

@@ -1,5 +1,6 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.wallet.controller.WalletController;
+import org.example.wallet.dto.OperationType;
 import org.example.wallet.dto.WalletOperationRequest;
 import org.example.wallet.service.WalletService;
 import org.junit.jupiter.api.BeforeEach;
@@ -40,7 +41,7 @@ public class WalletControllerTest {
         UUID walletId = UUID.randomUUID();
         WalletOperationRequest request = new WalletOperationRequest();
         request.setWalletId(walletId);
-        request.setOperationType(WalletOperationRequest.OperationType.DEPOSIT);
+        request.setOperationType(OperationType.DEPOSIT);
         request.setAmount(500L);
 
         mockMvc.perform(post("/api/v1/wallet")
@@ -56,7 +57,7 @@ public class WalletControllerTest {
         UUID walletId = UUID.randomUUID();
         WalletOperationRequest request = new WalletOperationRequest();
         request.setWalletId(walletId);
-        request.setOperationType(WalletOperationRequest.OperationType.DEPOSIT);
+        request.setOperationType(OperationType.DEPOSIT);
         request.setAmount(500L);
 
         doThrow(new IllegalArgumentException("Invalid operation type")).when(walletService).operateWallet(any());
